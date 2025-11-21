@@ -31,9 +31,8 @@ app.get('/notes', (req, res) => {
 })
 
 app.get('/notes/:notesId', (req, res) => {
-  const notesId = req.params
-  res.status(200).json({ message: `Retrieved note with ID: ${notesId}` })
-})
+  const {notesId} = req.params
+res.status(200).json({ message: `Retrieved note with ID: ${notesId}` });})
 
 app.get('/test-error', ()=>{
     throw new Error('Simulated server error');
