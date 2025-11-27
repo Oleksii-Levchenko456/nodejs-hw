@@ -4,7 +4,7 @@ import cors from 'cors';
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import logger from './middleware/logger.js'
-import notesRouter from './routes/notesRouter.js'
+import notesRouter from './routes/notesRoutes.js'
 import {errorHandler} from './middleware/errorHandler.js'
 
 
