@@ -4,21 +4,21 @@ import cors from 'cors';
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import logger from './middleware/logger.js'
-import notesRoutes from './routes/notesRoutes.js'
-import {errorHandlers} from './middleware/errorHandler.js'
+import notesRouter from './routes/notesRouter.js'
+import {errorHandler} from './middleware/errorHandler.js'
 
 
 export const app = express();
 export const PORT = process.env.PORT || 3000;
 
 app.use(logger)
-app.use(cors())
 app.use(express.json())
+app.use(cors())
 
-app.use(notesRoutes)
+app.use(notesRouter)
 
 app.use(notFoundHandler);
-app.use(errorHandlers)
+app.use(errorHandler)
 
 await connectMongoDB()
 
