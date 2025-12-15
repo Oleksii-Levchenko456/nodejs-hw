@@ -21,7 +21,7 @@ export const userSchema = new Schema({
   }
 )
 
-userSchema.pre('save', function () {
+userSchema.pre('save', async function () {
   if (!this.username) {
     this.username = this.email;
   }

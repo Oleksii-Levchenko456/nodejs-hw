@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
-import logger from './middleware/logger.js'
+import { logger } from './middleware/logger.js';
 import notesRouter from './routes/notesRoutes.js';
 import authRouter from './routes/authRoutes.js'
 import { errorHandler } from './middleware/errorHandler.js'
