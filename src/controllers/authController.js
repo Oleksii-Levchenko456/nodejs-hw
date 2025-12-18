@@ -8,8 +8,7 @@ import jwt from 'jsonwebtoken';
 import handlebars from "handlebars";
 import path from 'node:path';
 import fs from 'node:fs/promises';
-import { sendEmail } from "../utilits/sendMail.js";
-import { saveFileToCloudinary } from "../utilits/saveFileToCloudinary.js";
+import { sendEmail } from "../utils/sendMail.js";
 
 
 
@@ -176,16 +175,4 @@ export const resetPassword = async (req, res, next) => {
 )
 };
 
-export const updateUserAvatar = async (req, res, next) => {
-  if (!req.file) {
-    return next(createHttpError(400, 'No file'))
-  }
-  const result = await saveFileToCloudinary(req.file.buffer, req.user._id)
 
-  const updateUser = await User.findByIdAndUpdate(
-    req.user._id,
-    { avatar: result.secure_url },
-    {new: true},
-  )
-res.status(200).json({url: updateUser.avatar})
-}
