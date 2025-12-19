@@ -86,9 +86,7 @@ export const refreshUserSession = async (req, res, next) => {
 export const logoutUser = async(req, res,) => {
   const { sessionId } = req.cookies
   if (sessionId) {
-    await Session.findByIdAndDelete({
-      _id: sessionId,
-    })
+    await Session.findByIdAndDelete(sessionId)
   }
 
   res.clearCookie('accessToken')
@@ -122,7 +120,7 @@ export const requestResetEmail = async (req, res, next) => {
   const template = handlebars.compile(templateSource);
 
   const html = template({
-    name: user.name,
+    name: user.username,
     link: `${process.env.FRONTEND_DOMAIN}/reset-password?token=${JWToken}`
   })
 
